@@ -1,0 +1,83 @@
+.hero-banner {
+  background-image: url("./banner.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: "PT sans";
+}
+
+.hero-text {
+  max-width: 800px;
+  padding: 120px;
+}
+
+.hero-banner h1 {
+  font-size: 64px;
+  line-height: 62px;
+}
+
+.hero-banner p {
+  font-size: 20px;
+}
+
+.get-started-btn {
+  padding: 10px 5px;
+  font-size: 27px;
+}
+
+.about-us-container {
+  text-align: center;
+}
+
+.title-container {
+  background-color: #5bc84d;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-container {
+  background: #f0f1f3;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+}
+
+.about-us-space {
+  color: #5bc84d;
+}
+
+.hero-contact-us {
+  background-image: url("./banner2.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-container {
+  color: #ABB0C3;
+  padding: 10px;
+}
+
+.footer-links a {
+  padding: 10px;
+}
+
+.social-media-div {
+  justify-content: flex-end;
+}
+
+.footer-facebook {
+  font-size: 25px;
+  min-width: 40px;
+}
