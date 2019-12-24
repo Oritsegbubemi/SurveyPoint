@@ -1,7 +1,30 @@
 .about-us-title {
   background-color: #5bc84d;
+  font-size: 30px;
 }
 
-/* .about-us-content {
-    width: 300px;
-} */
+.about-us-content {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.about-us-details {
+  padding: 14px;
+  max-width: 250px;
+  margin: 0px auto;
+}
+
+.about-us-content-container {
+  background: #f0f1f3;
+  border: 1px solid #c4c4c4;
+}
+
+.about-us-space {
+  padding: 0px;
+}
+
+@media (max-width: 600px) {
+  .about-us-space {
+    display: none;
+  }
+}
