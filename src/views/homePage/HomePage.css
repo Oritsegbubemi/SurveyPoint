@@ -1,0 +1,100 @@
+.hero-banner {
+  background-image: url("./banner.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: "PT sans";
+  padding-bottom: 100px;
+}
+
+.hero-text {
+  max-width: 800px;
+  padding: 60px;
+}
+
+.hero-banner h1 {
+  font-size: 4.2em;
+  line-height: 62px;
+}
+
+.hero-banner p {
+  font-size: 20px;
+}
+
+.get-started-btn {
+  padding: 10px 5px;
+  font-size: 27px;
+}
+
+.about-us-container {
+  text-align: center;
+}
+
+.title-container {
+  background-color: #5bc84d;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-container {
+  background: #f0f1f3;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+}
+
+.about-us-space {
+  color: #5bc84d;
+}
+
+.hero-contact-us {
+  background-image: url("./banner2.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-container {
+  color: #abb0c3;
+  justify-content: space-around;
+}
+
+.footer-links a {
+  padding: 10px;
+}
+
+.social-media-div {
+  justify-content: flex-end;
+}
+
+.footer-facebook {
+  font-size: 25px;
+  min-width: 40px;
+}
+
+@media (max-width: 600px) {
+  .footer-links {
+    display: grid;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  .copyright-container {
+    width: 100%;
+  }
+}
+
+/* @media (min-width: 601px) and (max-width: 968px) {
+
+} */
