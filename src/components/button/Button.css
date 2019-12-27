@@ -1,8 +1,18 @@
+.btn-200 {
+  width: 200px;
+}
 .regular-button {
   background: #5bc84d;
   border: 1px solid #5bc84d;
   box-sizing: border-box;
   border-radius: 10px;
   color: white;
-  width: 200px;
+}
+
+.inverse-button {
+  background: #ffffff;
+  border: 1px solid #818691;
+  box-sizing: border-box;
+  border-radius: 10px;
+  color: #5bc84d;
 }

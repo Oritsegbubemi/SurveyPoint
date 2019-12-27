@@ -6,12 +6,19 @@ import {
   faArrowRight,
   faPhoneAlt,
   faEnvelope,
-  faMapMarkerAlt
+  faMapMarkerAlt,
+  faBars,
+  faUser,
+  faTrashAlt,
+  faSignOutAlt,
+  faAddressCard,
+  faListAlt
 } from "@fortawesome/free-solid-svg-icons";
 
 import Signup from "./views/signup/Signup";
 import "./App.css";
 import HomePage from "./views/homePage/HomePage";
+import Navbar from "./components/navbar/Navbar";
 
 library.add(
   fab,
@@ -19,7 +26,13 @@ library.add(
   faPhoneAlt,
   faEnvelope,
   faMapMarkerAlt,
-  faTwitter
+  faTwitter,
+  faBars,
+  faUser,
+  faTrashAlt,
+  faSignOutAlt,
+  faAddressCard,
+  faListAlt
 );
 
 class App extends Component {
@@ -27,6 +40,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+          <Navbar />
           <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/signup" component={Signup} />

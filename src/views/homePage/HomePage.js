@@ -9,15 +9,15 @@ import { Link } from "react-router-dom";
 class Home extends Component {
   render() {
     return (
-      <div>
+      <div id="main-page">
         <header className="hero-container">
           <div className="hero-banner">
-            <div class="hero-text">
+            <div className="hero-text">
               <h1>A simple & powerful online survey tool</h1>
               <p>
                 Signup now for free unlimited surveys, questions and responses
               </p>
-              <Button customClassName="regular-button get-started-btn">
+              <Button customClassName="regular-button get-started-btn btn-200">
                 Get Started <FontAwesomeIcon icon="arrow-right" />
               </Button>
             </div>
@@ -50,7 +50,7 @@ class Home extends Component {
         </section>
         <section className="contact-us-container">
           <div className="hero-contact-us">
-            <div class="hero-contact-us-text">
+            <div className="hero-contact-us-text">
               <h1>contact us</h1>
               <p>
                 <FontAwesomeIcon icon="phone-alt" /> 08123456789
