@@ -19,6 +19,7 @@ import Signup from "./views/signup/Signup";
 import "./App.css";
 import HomePage from "./views/homePage/HomePage";
 import Navbar from "./components/navbar/Navbar";
+import {Provider} from "./store/context"
 
 library.add(
   fab,
@@ -34,19 +35,20 @@ library.add(
   faAddressCard,
   faListAlt
 );
-
-class App extends Component {
+class App extends Component {  
   render() {
     return (
+      <Provider>
       <Router>
         <div className="App">
           <Navbar />
           <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/signup" component={Signup} />
-          </Switch>
+          </Switch>    
         </div>
       </Router>
+      </Provider>
     );
   }
 }
