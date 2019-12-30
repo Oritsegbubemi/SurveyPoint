@@ -6,11 +6,10 @@ import "./Signup.css";
 import Button from "../../components/button/Button";
 import Copyright from "../../components/copyright/Copyright";
 
-
 class Signup extends Component {
   render() {
     return (
-      <div className="col-md-4 offset-md-4 signup-container main-page">
+      <div className="col-md-4 offset-md-4 signup-container">
         <div className="text-center">
           <img src={Logo} alt="logo" className="signup-logo" />
           <h1>Create Account</h1>

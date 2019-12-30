@@ -12,14 +12,18 @@ import {
   faTrashAlt,
   faSignOutAlt,
   faAddressCard,
-  faListAlt
+  faListAlt,
+  faPlusCircle,
+  faPencilAlt,
+  faSearch
 } from "@fortawesome/free-solid-svg-icons";
 
 import Signup from "./views/signup/Signup";
 import "./App.css";
 import HomePage from "./views/homePage/HomePage";
 import Navbar from "./components/navbar/Navbar";
-import {Provider} from "./store/context"
+import { Provider } from "./store/context";
+import Dashboard from "./views/dashboard/Dashboard";
 
 library.add(
   fab,
@@ -33,21 +37,25 @@ library.add(
   faTrashAlt,
   faSignOutAlt,
   faAddressCard,
-  faListAlt
+  faListAlt,
+  faPlusCircle,
+  faPencilAlt,
+  faSearch
 );
-class App extends Component {  
+class App extends Component {
   render() {
     return (
       <Provider>
-      <Router>
-        <div className="App">
-          <Navbar />
-          <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/signup" component={Signup} />
-          </Switch>    
-        </div>
-      </Router>
+        <Router>
+          <div className="App">
+            <Navbar />
+            <Switch>
+              <Route path="/" exact component={HomePage} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/dashboard" component={Dashboard} />
+            </Switch>
+          </div>
+        </Router>
       </Provider>
     );
   }

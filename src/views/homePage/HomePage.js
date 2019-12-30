@@ -5,16 +5,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AboutUsContent from "../../components/aboutUsContent/AboutUsContent";
 import Copyright from "../../components/copyright/Copyright";
 import { Link } from "react-router-dom";
-import {Context, Consumer} from "../../store/context"
+import { Consumer } from "../../store/context";
 
-class Home extends Component {  
-  render() {    
+class Home extends Component {
+  render() {
     return (
       <Consumer>
-        {(value) => {
-          const {sidebar} = value;
+        {value => {
+          const { sidebar } = value;
           const customClass = sidebar.openSidebar ? "add-margin" : "";
-          console.log(111, customClass);
           return (
             <div className={`main-page ${customClass}`}>
               <header className="hero-container">
@@ -22,7 +21,8 @@ class Home extends Component {
                   <div className="hero-text">
                     <h1>A simple & powerful online survey tool</h1>
                     <p>
-                      Signup now for free unlimited surveys, questions and responses
+                      Signup now for free unlimited surveys, questions and
+                      responses
                     </p>
                     <Button customClassName="regular-button get-started-btn btn-200">
                       Get Started <FontAwesomeIcon icon="arrow-right" />
@@ -34,24 +34,24 @@ class Home extends Component {
                 <div className="row mr-0 ml-o">
                   <AboutUsContent title="Create">
                     {" "}
-                    Design your survey with our simple tool to make questionnaires
-                    using various question types
+                    Design your survey with our simple tool to make
+                    questionnaires using various question types
                   </AboutUsContent>
                   <AboutUsContent
                     customClassName="about-us-space"
                     title="h"
                   ></AboutUsContent>
                   <AboutUsContent title="Share">
-                    Post your survey URL on social media, on your website or send it
-                    via email to collect your answers
+                    Post your survey URL on social media, on your website or
+                    send it via email to collect your answers
                   </AboutUsContent>
                   <AboutUsContent
                     customClassName="about-us-space"
                     title="h"
                   ></AboutUsContent>
                   <AboutUsContent title="Analyse">
-                    Our dashboard will display all the results and statistics with
-                    simple charts or through data export
+                    Our dashboard will display all the results and statistics
+                    with simple charts or through data export
                   </AboutUsContent>
                 </div>
               </section>
@@ -63,7 +63,8 @@ class Home extends Component {
                       <FontAwesomeIcon icon="phone-alt" /> 08123456789
                     </p>
                     <p>
-                      <FontAwesomeIcon icon="envelope" /> services@surveypoint.com
+                      <FontAwesomeIcon icon="envelope" />{" "}
+                      services@surveypoint.com
                     </p>
                     <p>
                       <FontAwesomeIcon icon="map-marker-alt" /> Lagos, Nigeria
@@ -98,7 +99,7 @@ class Home extends Component {
                 </div>
               </footer>
             </div>
-          )
+          );
         }}
       </Consumer>
     );
