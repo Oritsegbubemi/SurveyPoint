@@ -1,23 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Navbar.css";
 import Button from "../button/Button";
 import Sidebar from "../sidebar/Sidebar";
+import {Context} from "../../store/context"
 
 const Navbar = () => {
-  const [state, setState] = useState({
-    openSidebar: false
-  });
-
-  const toggleSidebar = () => {
-    console.log(12, state);
-    setState({ openSidebar: !state.openSidebar });
-  };
-
+  const {sidebar, toggleSidebar} = useContext(Context);  
   return (
-    <div>
-      <nav className="navbar">
-        <div className="navbar-left-side">
+    <React.Fragment>
+    <nav className="navbar">
+         <div className="navbar-left-side">
           <div className="bars-container" onClick={toggleSidebar}>
             <FontAwesomeIcon icon="bars" />
           </div>
@@ -30,11 +23,11 @@ const Navbar = () => {
           <Button customClassName="inverse-button btn-nav mr-5">Login</Button>{" "}
           <Button customClassName="regular-button btn-nav">Signup</Button>
         </div>
-      </nav>
+    </nav>
 
-      <Sidebar handleOpenSidebar={state.openSidebar} />
-    </div>
-  );
+    <Sidebar handleOpenSidebar={sidebar.openSidebar} />
+    </React.Fragment>
+  )
 };
 
 export default Navbar;

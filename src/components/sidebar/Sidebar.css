@@ -27,8 +27,13 @@
   padding: 15px 0;
 }
 
-#main-page {
+.main-page {
+  margin-left: 0px;
   transition: margin-left 0.5s; /* If you want a transition effect */
+}
+
+.add-margin {
+  margin-left: 300px;
 }
 
 .sidebar-links {
@@ -53,4 +58,11 @@
 
 .sidebar-logo-container img {
   width: 200px;
+}
+
+
+@media (max-width: 650px) {
+  .add-margin {
+    margin-left: 0px;
+  }
 }
