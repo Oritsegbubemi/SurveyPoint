@@ -1,0 +1,18 @@
+.survey-card-container {
+  display: flex;
+  margin-top: 20px;
+}
+
+.dashboard-search {
+  border: none;
+  padding: 10px;
+  margin-right: 10px;
+  border-bottom: 1px solid #100f0f52;
+}
+
+.dashboard-search:focus {
+  outline: none !important;
+  border: none;
+  border-bottom: 1px solid #100f0f52;
+  box-shadow: 0 0 10px #719ece;
+}

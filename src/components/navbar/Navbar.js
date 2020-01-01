@@ -7,6 +7,8 @@ import {Context} from "../../store/context"
 
 const Navbar = () => {
   const {sidebar, toggleSidebar} = useContext(Context);  
+  
+
   return (
     <React.Fragment>
     <nav className="navbar">

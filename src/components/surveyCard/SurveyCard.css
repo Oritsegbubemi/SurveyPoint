@@ -1,0 +1,39 @@
+.new-survey-card {
+  background: #5bc84d;
+  border: 1px solid #5bc84d;
+  box-sizing: border-box;
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  font-size: 24px;
+  text-align: center;
+  padding: 10px;
+  margin: 15px;
+}
+
+.new-survey-card p {
+  color: white;
+}
+
+.existing-survey-card {
+  background: #5bc84d;
+  border: 1px solid #5bc84d;
+  box-sizing: border-box;
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  font-size: 24px;
+  text-align: center;
+  padding: 10px;
+  display: grid;
+  margin: 15px;
+}
+
+.existing-survey-card p {
+  color: white;
+}
+.survey-card-icon {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -20px;
+}
