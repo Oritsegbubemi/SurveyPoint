@@ -2,17 +2,18 @@ import React from "react";
 import "./Input.css";
 
 /** How to use the components
- * <Input type="text" name="firstName" customClassname="some-class"/>
+ * <Input type="text" name="firstName" customClassName="some-class"/>
  */
 
 const Input = props => {
   const {
-    customProps,
     customClassName,
     handleBlur,
     handleChange,
     name,
-    type
+    type,
+    placeHolder,
+    ...customProps
   } = props;
 
   return (
@@ -21,6 +22,7 @@ const Input = props => {
       onChange={handleChange}
       type={type}
       onBlur={handleBlur}
+      placeholder={placeHolder}
       className={customClassName}
       name={name}
     />
