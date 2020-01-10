@@ -1,0 +1,34 @@
+.survey-question {
+  background: #ffffff;
+  width: 80%;
+  margin: 10px auto;
+  padding: 20px;
+  position: relative;
+}
+
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.top-right:hover {
+  color: red;
+}
+
+.survey-question-input-container {
+  margin-bottom: 10px;
+}
+
+.survey-question-input {
+  width: 100%;
+}
+
+.answer-radio {
+  margin-right: 5px;
+}
+
+.answer-label {
+}

@@ -1,0 +1,43 @@
+.selection-container {
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+}
+
+.selection-container section {
+  margin-bottom: 20px;
+}
+
+.selection-button {
+  width: 167px;
+  height: 58px;
+  background: #ffffff;
+  border: 1px solid #828282;
+  box-sizing: border-box;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.survey-questions-container {
+  background-image: url("../homePage/banner2.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  min-height: 500px;
+  font-family: "PT sans";
+}
+
+.selection-icon {
+  padding-right: 10px;
+}
+
+.survey-question-help {
+  text-align: center;
+}
+
+.survey-question-help p {
+  font-size: 3em;
+}
