@@ -14,6 +14,7 @@ class Login extends Component {
           <img src={Logo} alt="logo" className="login-logo" />
           <h3>Login to Survey Point</h3>
           <p>New to Survey Point? Signup Now</p>
+          <hr />
         </div>
 
         <form>

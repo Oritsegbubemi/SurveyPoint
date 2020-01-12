@@ -15,6 +15,7 @@ class Signup extends Component {
           <h3>Create Account</h3>
           <p>Signup for free unlimited survey</p>
           <p>Already a Member? Login Now</p>
+          <hr />
         </div>
 
         <form>
