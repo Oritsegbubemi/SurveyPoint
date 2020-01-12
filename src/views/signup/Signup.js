@@ -12,9 +12,9 @@ class Signup extends Component {
       <div className="col-md-4 offset-md-4 signup-container">
         <div className="text-center">
           <img src={Logo} alt="logo" className="signup-logo" />
-          <h1>Create Account</h1>
+          <h3>Create Account</h3>
           <p>Signup for free unlimited survey</p>
-          <p>already a Member? Login Now</p>
+          <p>Already a Member? Login Now</p>
         </div>
 
         <form>

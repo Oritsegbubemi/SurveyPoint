@@ -4,7 +4,7 @@ import "./Copyright.css";
 const Copyright = () => {
   return (
     <small id="copy" className="form-text text-center copyright">
-      Copyright SurveyPoint 2019
+      ©copyright surveypoint 2020
     </small>
   );
 };
