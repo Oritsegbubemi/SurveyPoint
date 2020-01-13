@@ -3,9 +3,8 @@ import "./CheckboxQuestion.css";
 import Input from "../input/Input";
 
 const CheckboxQuestion = props => {
-  console.log(55, props);
-
-  const { checkboxName, removeQuestion, checkboxKey } = props;
+  const { inputName, removeQuestion } = props;
+  
   const checkbox = [];
   const checkboxCount = 4;
   for (let index = 0; index < checkboxCount; index++) {
@@ -14,13 +13,13 @@ const CheckboxQuestion = props => {
         <Input
           key={index + 1}
           type="checkbox"
-          name={`answer${checkboxName}`}
+          name={`answer${inputName}`}
           customClassName=""
         />
         <label
           // contentEditable="true"
           className="answer-label"
-          htmlFor={`answer${checkboxName}`}
+          htmlFor={`answer${inputName}`}
         >
           {`Answer ${index + 1}`}
         </label>
@@ -29,7 +28,7 @@ const CheckboxQuestion = props => {
   }
   return (
     <div className="survey-question">
-      <span onClick={() => removeQuestion(checkboxName)} className="top-right">
+      <span onClick={() => removeQuestion(inputName)} className="top-right">
         cancel
       </span>
       <div className="survey-question-input-container">

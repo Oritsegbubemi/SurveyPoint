@@ -3,9 +3,7 @@ import "./RadioQuestion.css";
 import Input from "../input/Input";
 
 const RadioQuestion = props => {
-  const { radioName, radioKey } = props;
-
-  console.log(99, radioKey);
+  const { inputName, removeQuestion } = props;
 
   const radioButton = [];
   const radioButtonCount = 3;
@@ -15,13 +13,13 @@ const RadioQuestion = props => {
         <Input
           key={index + 1}
           type="radio"
-          name={`answer${radioName}`}
+          name={`answer${inputName}`}
           customClassName="answer-radio"
         />
         <label
           // contentEditable="true"
           className="answer-label"
-          htmlFor={`answer${radioName}`}
+          htmlFor={`answer${inputName}`}
         >
           {`Answer ${index + 1}`}
         </label>
@@ -30,7 +28,9 @@ const RadioQuestion = props => {
   }
   return (
     <div className="survey-question">
-      <span className="top-right">cancel</span>
+      <span onClick={() => removeQuestion(inputName)} className="top-right">
+        cancel
+      </span>
       <div className="survey-question-input-container">
         <Input
           type="text"
