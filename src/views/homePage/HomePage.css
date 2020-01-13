@@ -68,6 +68,7 @@
 .footer-container {
   color: #abb0c3;
   justify-content: space-around;
+  margin: 8px;
 }
 
 .footer-links a {
