@@ -16,7 +16,7 @@ const Sidebar = props => {
       <div className="sidebar-user-profile">
         {" "}
         <FontAwesomeIcon icon="user" />
-        <small>Damilola Adekoya</small>
+        <small>Makpokpomi Gbubemi</small>
       </div>
 
       <div className="sidebar-links">

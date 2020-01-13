@@ -1,4 +1,4 @@
-.signup-container {
+.login-container {
   background: #ffffff;
   border: 1px solid #f3f5f9;
   box-sizing: border-box;
@@ -9,11 +9,18 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.signup-logo {
+.login-logo {
   width: 30%;
 }
 
-.signup-button-container {
+.forgot-password {
+  color: #92DFFF;
+  float: right;
+  padding: 0%;
+  margin: 0%;
+}
+  
+.login-button-container {
   display: flex;
   justify-content: center;
 }

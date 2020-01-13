@@ -58,7 +58,7 @@ class Home extends Component {
               <section className="contact-us-container">
                 <div className="hero-contact-us">
                   <div className="hero-contact-us-text">
-                    <h1>contact us</h1>
+                    <h1>Contact Us</h1>
                     <p>
                       <FontAwesomeIcon icon="phone-alt" /> 08123456789
                     </p>
@@ -73,14 +73,6 @@ class Home extends Component {
                 </div>
               </section>
               <footer className="row ml-0 mr-0 footer-container">
-                <div className="footer-links">
-                  <Link>Terms & Privacy</Link>
-                  <Link>Help</Link>
-                  <Link>Contact</Link>
-                </div>
-                <div className="copyright-container">
-                  <Copyright />
-                </div>
                 <div className="social-media-container">
                   <div className="row social-media-div">
                     <FontAwesomeIcon
@@ -96,6 +88,14 @@ class Home extends Component {
                       icon={["fab", "linkedin"]}
                     />
                   </div>
+                </div>
+                <div className="copyright-container">
+                  <Copyright />
+                </div>
+                <div className="footer-links">
+                  <Link>Terms & Privacy</Link>
+                  <Link>Help</Link>
+                  <Link>Contact</Link>
                 </div>
               </footer>
             </div>

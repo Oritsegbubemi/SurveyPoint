@@ -22,9 +22,10 @@ import {
   faArrowDown
 } from "@fortawesome/free-solid-svg-icons";
 
-import Signup from "./views/signup/Signup";
 import "./App.css";
 import HomePage from "./views/homePage/HomePage";
+import Signup from "./views/signup/Signup";
+import Login from "./views/login/Login";
 import Navbar from "./components/navbar/Navbar";
 import { Provider } from "./store/context";
 import SingleSelectionProvider from "./store/selectionFields";
@@ -62,6 +63,7 @@ class App extends Component {
             <Switch>
               <Route path="/" exact component={HomePage} />
               <Route path="/signup" component={Signup} />
+              <Route path="/login" component={Login} />
               <Route path="/dashboard" component={Dashboard} />
               <SingleSelectionProvider>
                 <Route path="/new-survey" component={CreateSurvey} />
