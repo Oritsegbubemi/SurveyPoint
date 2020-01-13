@@ -20,6 +20,7 @@
 
 .survey-question-input-container {
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 .survey-question-input {
@@ -31,4 +32,5 @@
 }
 
 .answer-label {
+  margin-left: 5px;
 }

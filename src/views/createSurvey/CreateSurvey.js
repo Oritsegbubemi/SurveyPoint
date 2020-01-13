@@ -1,100 +1,123 @@
-import React, { useContext } from "react";
+import React, { Component } from "react";
 import "./CreateSurvey.css";
-import Button from "../../components/button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SurveyCard from "../../components/surveyCard/SurveyCard";
 import RadioQuestion from "../../components/radioQuestion/RadioQuestion";
 import CheckboxQuestion from "../../components/checkboxQuestion/CheckboxQuestion";
-import { SelectionContext } from "../../store/selectionFields";
 import Input from "../../components/input/Input";
 
-const CreateSurvey = () => {
-  const { fieldCount, incrementFieldCount, decrementFieldCount } = useContext(
-    SelectionContext
-  );
-  console.log(78, fieldCount);
+class CreateSurvey extends Component {
+  state = {
+    questions: [],
+    questionsCount: 0
+  };
 
-  let counter = Object.values(fieldCount).length;
+  incrementFieldCount = (question, key) => {
+    const { questions, questionsCount } = this.state;
+    const updatedQuestions = [...questions, question];
 
-  const noSelectedField = (
-    <div className="survey-question-help">
-      <p>Click on the fields to the left to start</p>
-    </div>
-  );
+    this.setState({
+      questions: updatedQuestions,
+      questionsCount: questionsCount + 1
+    });
+  };
 
-  const checkBox = (
-    <CheckboxQuestion
-      checkboxName={`checkbox-${counter}`}
-      removeQuestion={decrementFieldCount}
-      checkboxKey={counter}
-    />
-  );
+  decrementFieldCount = inputName => {
+    const { questions } = this.state;
 
-  const radio = (
-    <RadioQuestion radioName={`radio${counter}`} radioKey={counter} />
-  );
+    const filteredQuestions = questions.filter(
+      question => question.props.inputName !== inputName
+    );
 
-  const res = Object.values(fieldCount).map((field, index) => {
-    return <div key={index + 1}>{field}</div>;
-  });
+    this.setState({ questions: filteredQuestions });
+  };
 
-  return (
-    <section className="row">
-      <div className="col-md-4 selection-container">
-        <section>
-          <h3>Document Name</h3>
-          <Input
-            type="text"
-            name="documentName"
-            customClassName="dashboard-search survey-question-input"
-            placeHolder="Survey Name"
-          />
-        </section>
-        <section>
-          <h3>Actions</h3>
-          <button className="selection-button">
-            <span className="selection-icon">
-              <FontAwesomeIcon icon="arrow-left" />
-            </span>
-            Exit
-          </button>
-          <button className="selection-button">
-            <span className="selection-icon">
-              <FontAwesomeIcon icon="arrow-down" />
-            </span>
-            Save
-          </button>
-        </section>
-        <section>
-          <h3>Choice Based</h3>
-          <button
-            className="selection-button"
-            onClick={() => incrementFieldCount(radio, counter)}
-          >
-            <span className="selection-icon">
-              <FontAwesomeIcon icon="dot-circle" />
-            </span>
-            Single Selection
-          </button>
-          <button
-            className="selection-button"
-            onClick={() => incrementFieldCount(checkBox, counter)}
-          >
-            <span className="selection-icon">
-              <FontAwesomeIcon icon="check-square" />
-            </span>
-            multiple selection
-          </button>
-        </section>
+  render() {
+    const { questions, questionsCount } = this.state;
+
+    const noSelectedField = (
+      <div className="survey-question-help">
+        <p>Click on the fields to the left to start</p>
       </div>
-      <div className="col-md-8 survey-questions-container">
-        {/* {result.length ? result.sort() : noSelectedField} */}
-        {/* {Object.values(fieldCount) ? fieldCount : noSelectedField} */}
-        {/* {Object.values(fieldCount)} */}
-        {res}
-      </div>
-    </section>
-  );
-};
+    );
+
+    const checkBox = (
+      <CheckboxQuestion
+        inputName={`checkbox-${questionsCount}`}
+        removeQuestion={this.decrementFieldCount}
+        checkboxKey={questionsCount}
+      />
+    );
+
+    const radio = (
+      <RadioQuestion
+        inputName={`radio${questionsCount}`}
+        removeQuestion={this.decrementFieldCount}
+      />
+    );
+
+    const displayedQuestions = Object.values(questions).map((field, index) => {
+      return <div key={index + 1}>{field}</div>;
+    });
+
+    return (
+      <section className="row">
+        <div className="col-md-4 selection-container">
+          <section>
+            <h3>Document Name</h3>
+            <Input
+              type="text"
+              name="documentName"
+              customClassName="dashboard-search survey-question-input"
+              placeHolder="Survey Name"
+            />
+          </section>
+          <section>
+            <h3>Actions</h3>
+            <button className="selection-button">
+              <span className="selection-icon">
+                <FontAwesomeIcon icon="arrow-left" />
+              </span>
+              Exit
+            </button>
+            <button className="selection-button">
+              <span className="selection-icon">
+                <FontAwesomeIcon icon="arrow-down" />
+              </span>
+              Save
+            </button>
+          </section>
+          <section>
+            <h3>Choice Based</h3>
+            <button
+              className="selection-button"
+              onClick={() =>
+                this.incrementFieldCount(radio, `checkbox-${questionsCount}`)
+              }
+            >
+              <span className="selection-icon">
+                <FontAwesomeIcon icon="dot-circle" />
+              </span>
+              Single Selection
+            </button>
+            <button
+              className="selection-button"
+              onClick={() =>
+                this.incrementFieldCount(checkBox, `checkbox-${questionsCount}`)
+              }
+            >
+              <span className="selection-icon">
+                <FontAwesomeIcon icon="check-square" />
+              </span>
+              multiple selection
+            </button>
+          </section>
+        </div>
+        <div className="col-md-8 survey-questions-container">
+          {displayedQuestions.length ? displayedQuestions : noSelectedField}
+        </div>
+      </section>
+    );
+  }
+}
 
 export default CreateSurvey;

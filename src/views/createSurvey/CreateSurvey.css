@@ -41,3 +41,15 @@
 .survey-question-help p {
   font-size: 3em;
 }
+
+@media (max-width: 1132px) {
+  .selection-button {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .selection-container {
+    text-align: center;
+  }
+}

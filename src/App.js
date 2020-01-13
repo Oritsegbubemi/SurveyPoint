@@ -28,7 +28,6 @@ import Signup from "./views/signup/Signup";
 import Login from "./views/login/Login";
 import Navbar from "./components/navbar/Navbar";
 import { Provider } from "./store/context";
-import SingleSelectionProvider from "./store/selectionFields";
 import Dashboard from "./views/dashboard/Dashboard";
 import CreateSurvey from "./views/createSurvey/CreateSurvey";
 
@@ -65,9 +64,7 @@ class App extends Component {
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
               <Route path="/dashboard" component={Dashboard} />
-              <SingleSelectionProvider>
                 <Route path="/new-survey" component={CreateSurvey} />
-              </SingleSelectionProvider>
             </Switch>
           </div>
         </Router>
