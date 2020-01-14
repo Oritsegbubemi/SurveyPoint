@@ -27,9 +27,12 @@ import HomePage from "./views/homePage/HomePage";
 import Signup from "./views/signup/Signup";
 import Login from "./views/login/Login";
 import Navbar from "./components/navbar/Navbar";
-import { Provider } from "./store/context";
+import { Provider } from "react-redux";
 import Dashboard from "./views/dashboard/Dashboard";
 import CreateSurvey from "./views/createSurvey/CreateSurvey";
+import setupStore from "./store";
+
+const store = setupStore();
 
 library.add(
   fab,
@@ -55,7 +58,7 @@ library.add(
 class App extends Component {
   render() {
     return (
-      <Provider>
+      <Provider store={store}>
         <Router>
           <div className="App">
             <Navbar />
@@ -64,7 +67,7 @@ class App extends Component {
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
               <Route path="/dashboard" component={Dashboard} />
-                <Route path="/new-survey" component={CreateSurvey} />
+              <Route path="/new-survey" component={CreateSurvey} />
             </Switch>
           </div>
         </Router>

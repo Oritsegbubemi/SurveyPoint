@@ -1,35 +1,49 @@
-import React, { useContext } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Navbar.css";
-import Button from "../button/Button";
 import Sidebar from "../sidebar/Sidebar";
-import {Context} from "../../store/context"
+import { connect } from "react-redux";
+import { sidebarToggle } from "./NavbarAction";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
-  const {sidebar, toggleSidebar} = useContext(Context);  
-  
+const Navbar = props => {
+  const { sidebarToggle, sidebarState } = props;
 
   return (
     <React.Fragment>
-    <nav className="navbar">
-         <div className="navbar-left-side">
-          <div className="bars-container" onClick={toggleSidebar}>
+      <nav className="navbar">
+        <div className="navbar-left-side">
+          <div className="bars-container" onClick={sidebarToggle}>
             <FontAwesomeIcon icon="bars" />
           </div>
           <div className="logo-container">
-            <h3>Survey Point</h3>
+            <Link to="/">
+              <h3>Survey Point</h3>
+            </Link>
           </div>
         </div>
 
         <div className="navbar-right">
-          <Button customClassName="inverse-button btn-nav mr-5">Login</Button>{" "}
-          <Button customClassName="regular-button btn-nav">Signup</Button>
+          <Link to="/login" className="btn inverse-button btn-nav mr-5">
+            Login
+          </Link>{" "}
+          <Link to="/signup" className="btn regular-button btn-nav">
+            Signup
+          </Link>
         </div>
-    </nav>
+      </nav>
 
-    <Sidebar handleOpenSidebar={sidebar.openSidebar} />
+      <Sidebar handleOpenSidebar={sidebarState} />
     </React.Fragment>
-  )
+  );
 };
 
-export default Navbar;
+export const mapStateToProps = state => ({
+  sidebarState: state.sidebar.sidebar
+});
+
+export const mapDispatchToProps = dispatch => ({
+  sidebarToggle: () => dispatch(sidebarToggle())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

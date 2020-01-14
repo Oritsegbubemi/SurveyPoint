@@ -27,8 +27,8 @@ const Input = props => {
       className={customClassName}
       name={name}
       value={value}
-      autoCorrect={false}
-      autoCapitalize={false}
+      autoCorrect="false"
+      autoCapitalize="false"
     />
   );
 };
