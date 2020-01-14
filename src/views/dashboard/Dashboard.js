@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Dashboard.css";
 import SurveyCard from "../../components/surveyCard/SurveyCard";
 import ExistingSurveyCard from "../../components/surveyCard/existingSurveyCard";
-import { Context } from "../../store/context";
 import Input from "../../components/input/Input";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { connect } from "react-redux";
 
-const Dashboard = () => {
-  const { sidebar } = useContext(Context);
-  const customClass = sidebar.openSidebar ? "add-margin" : "";
+const Dashboard = props => {
+  const { sidebarState } = props;
+  const customClass = sidebarState ? "add-margin" : "";
 
   return (
     <div className={`main-page ${customClass}`}>
@@ -24,4 +24,8 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export const mapStateToProps = state => ({
+  sidebarState: state.sidebar.sidebar
+});
+
+export default connect(mapStateToProps)(Dashboard);
