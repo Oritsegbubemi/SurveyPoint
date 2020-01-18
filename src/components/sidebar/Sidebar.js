@@ -29,7 +29,7 @@ const Sidebar = props => {
         <Link to="#">
           <FontAwesomeIcon icon="address-card" /> Contact
         </Link>
-        <Link to="#">
+        <Link to="/logout">
           <FontAwesomeIcon icon="sign-out-alt" /> Logout
         </Link>
       </div>

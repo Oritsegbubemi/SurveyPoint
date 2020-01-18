@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import firebase from "firebase";
+import Fire from "../../config/Fire";
 import Logo from "./Logo.png";
 import Input from "../../components/input/Input";
 import Label from "../../components/label/Label";
@@ -22,18 +22,16 @@ class Login extends Component {
 
   onButtonPress() {
     const { email, password } = this.state;
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(this.onLoginSuccess.bind(this))
-      .catch(this.onLoginFail.bind(this));
+    Fire.auth().signInWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log('Successfully Logged In');
+        this.props.history.push('/dashboard')
+      })
+      .catch((err) => {
+        console.log('Error: ' + err.toString());
+      })
   }
-  onLoginFail() {
-    console.log("Error");
-  }
-  onLoginSuccess() {
-    console.log("Success");
-  }
+
 
   render() {
     return (

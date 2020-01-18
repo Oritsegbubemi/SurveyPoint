@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import firebase from "firebase";
+import Fire from "../../config/Fire";
 import Logo from "./Logo.png";
 import Input from "../../components/input/Input";
 import Label from "../../components/label/Label";
 import "./Signup.css";
 import Button from "../../components/button/Button";
 import Copyright from "../../components/copyright/Copyright";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class Signup extends Component {
   constructor(props) {
@@ -29,18 +29,14 @@ class Signup extends Component {
 
   onButtonPress() {
     const { email, password } = this.state;
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(this.onLoginSuccess.bind(this))
-      .catch(this.onLoginFail.bind(this));
-  }
-  //Just testing
-  onLoginFail() {
-    console.log("Error");
-  }
-  onLoginSuccess() {
-    console.log("Success");
+    Fire.auth().createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log('Successfully Logged In');
+        this.props.history.push('/dashboard')
+      })
+      .catch((err) => {
+        console.log('Error: ' + err.toString());
+      })
   }
 
   render() {

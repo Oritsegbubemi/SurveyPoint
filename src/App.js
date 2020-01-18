@@ -30,6 +30,8 @@ import Navbar from "./components/navbar/Navbar";
 import { Provider } from "react-redux";
 import Dashboard from "./views/dashboard/Dashboard";
 import CreateSurvey from "./views/createSurvey/CreateSurvey";
+import Logout from "./views/logout/Logout";
+import Fire from "../src/config/Fire";
 import setupStore from "./store";
 
 const store = setupStore();
@@ -56,6 +58,29 @@ library.add(
   faArrowDown
 );
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+    };
+
+    this.authListener = this.authListener.bind(this);
+  }
+
+  componentDidMount() {
+    this.authListener();
+  }
+
+  authListener() {
+    Fire.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+      } else {
+        this.setState({ user: null });
+      }
+    })
+  }
+  
   render() {
     return (
       <Provider store={store}>
@@ -68,6 +93,7 @@ class App extends Component {
               <Route path="/login" component={Login} />
               <Route path="/dashboard" component={Dashboard} />
               <Route path="/new-survey" component={CreateSurvey} />
+              <Route path="/logout" component={Logout} />
             </Switch>
           </div>
         </Router>
