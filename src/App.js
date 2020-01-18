@@ -65,6 +65,7 @@ class App extends Component {
     };
 
     this.authListener = this.authListener.bind(this);
+    
   }
 
   componentDidMount() {
@@ -76,7 +77,7 @@ class App extends Component {
       if (user) {
         this.setState({ user });
       } else {
-        this.setState({ user: null });
+        this.setState({ user: "example@gmail.com" });
       }
     })
   }
@@ -86,7 +87,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Navbar />
+            
             <Switch>
               <Route path="/" exact component={HomePage} />
               <Route path="/signup" component={Signup} />

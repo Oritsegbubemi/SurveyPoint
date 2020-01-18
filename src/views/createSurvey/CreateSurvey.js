@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./CreateSurvey.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Navbar3 from "../../components/navbar3/Navbar3";
 import RadioQuestion from "../../components/radioQuestion/RadioQuestion";
 import CheckboxQuestion from "../../components/checkboxQuestion/CheckboxQuestion";
 import Input from "../../components/input/Input";
@@ -60,6 +61,8 @@ class CreateSurvey extends Component {
     });
 
     return (
+      <div>
+        <Navbar3 />
       <section className="row">
         <div className="col-md-4 selection-container">
           <section>
@@ -116,6 +119,7 @@ class CreateSurvey extends Component {
           {displayedQuestions.length ? displayedQuestions : noSelectedField}
         </div>
       </section>
+      </div>
     );
   }
 }

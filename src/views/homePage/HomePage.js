@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./HomePage.css";
+import Navbar from "../../components/navbar/Navbar";
 import Button from "../../components/button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AboutUsContent from "../../components/aboutUsContent/AboutUsContent";
@@ -12,6 +13,8 @@ class Home extends Component {
 
     const customClass = sidebarState ? "add-margin" : "";
     return (
+      <div>
+        <Navbar />
       <div className={`main-page ${customClass}`}>
         <header className="hero-container">
           <div className="hero-banner">
@@ -93,6 +96,7 @@ class Home extends Component {
             <Link>Contact</Link>
           </div>
         </footer>
+      </div>
       </div>
     );
   }

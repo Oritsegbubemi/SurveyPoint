@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Fire from "../../config/Fire";
 import Logo from "./Logo.png";
+import Navbar from "../../components/navbar/Navbar";
 import Input from "../../components/input/Input";
 import Label from "../../components/label/Label";
 import "./Signup.css";
@@ -41,13 +42,16 @@ class Signup extends Component {
 
   render() {
     return (
+      <div>
+        <Navbar />
+      
       <div className="col-md-4 offset-md-4 signup-container">
         <div className="text-center">
           <img src={Logo} alt="logo" className="signup-logo" />
           <h3>Create Account</h3>
           <p>Signup for free unlimited survey</p>
           <p>
-            Already a Member? <Link>Login</Link>
+            Already a Member? <Link to="/login">Login</Link>
           </p>
           <hr />
         </div>
@@ -111,6 +115,7 @@ class Signup extends Component {
           </div>
         </form>
         <Copyright />
+      </div>
       </div>
     );
   }
