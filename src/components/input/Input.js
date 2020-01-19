@@ -26,7 +26,7 @@ const Input = props => {
       placeholder={placeHolder}
       className={customClassName}
       name={name}
-      value={value}
+      // value={value}
       autoCorrect="false"
       autoCapitalize="false"
     />
