@@ -1,7 +1,7 @@
 import React from "react";
 import "./Dashboard.css";
 import SurveyCard from "../../components/surveyCard/SurveyCard";
-import Navbar2 from "../../components/navbar2/Navbar2";
+import Navbar from "../../components/navbar/Navbar";
 import ExistingSurveyCard from "../../components/surveyCard/existingSurveyCard";
 import Input from "../../components/input/Input";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,7 +14,7 @@ const Dashboard = props => {
 
   return (
     <div>
-      <Navbar2 />
+      <Navbar />
     <div className={`main-page ${customClass}`}>
       <div className="ml-4">
         <Input type="text" name="search" customClassName="dashboard-search" />
@@ -22,7 +22,6 @@ const Dashboard = props => {
       </div>
       <div className="survey-card-container">
         <SurveyCard />
-
         <ExistingSurveyCard surveyTitle="Best Restaurant" />
       </div>
     </div>

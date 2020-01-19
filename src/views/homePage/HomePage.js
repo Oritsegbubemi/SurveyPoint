@@ -1,20 +1,29 @@
 import React, { Component } from "react";
-import "./HomePage.css";
-import Navbar from "../../components/navbar/Navbar";
-import Button from "../../components/button/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import AboutUsContent from "../../components/aboutUsContent/AboutUsContent";
-import Copyright from "../../components/copyright/Copyright";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./HomePage.css";
+import Header from "../../components/header/Header";
+import Button from "../../components/button/Button";
+import AboutUsContent from "../../components/aboutUsContent/AboutUsContent";
+import Copyright from "../../components/copyright/Copyright";
+
 class Home extends Component {
   render() {
     const { sidebarState } = this.props;
-
     const customClass = sidebarState ? "add-margin" : "";
     return (
       <div>
-        <Navbar />
+        <Header>
+          <div>
+          <Link to="/login" className="btn inverse-button btn-nav mr-5">
+            Login
+          </Link>{" "}
+          <Link to="/signup" className="btn regular-button btn-nav">
+            Signup
+          </Link>
+          </div>
+        </Header>
       <div className={`main-page ${customClass}`}>
         <header className="hero-container">
           <div className="hero-banner">
@@ -30,7 +39,7 @@ class Home extends Component {
           </div>
         </header>
         <section className="about-us-container">
-          <div className="row mr-0 ml-o">
+          <div className="row mr-0 ml-0">
             <AboutUsContent title="Create">
               {" "}
               Design your survey with our simple tool to make questionnaires

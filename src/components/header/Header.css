@@ -25,6 +25,12 @@
   .navbar-right {
     margin-right: 15px;
   }
+
+  .side-bar {
+      float: left;
+      justify-content: left;
+      align-items: flex-end;
+  }
   
   @media (max-width: 600px) {
     .navbar-right {

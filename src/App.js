@@ -21,13 +21,11 @@ import {
   faArrowLeft,
   faArrowDown
 } from "@fortawesome/free-solid-svg-icons";
-
+import { Provider } from "react-redux";
 import "./App.css";
 import HomePage from "./views/homePage/HomePage";
 import Signup from "./views/signup/Signup";
 import Login from "./views/login/Login";
-import Navbar from "./components/navbar/Navbar";
-import { Provider } from "react-redux";
 import Dashboard from "./views/dashboard/Dashboard";
 import CreateSurvey from "./views/createSurvey/CreateSurvey";
 import Logout from "./views/logout/Logout";
@@ -77,7 +75,7 @@ class App extends Component {
       if (user) {
         this.setState({ user });
       } else {
-        this.setState({ user: "example@gmail.com" });
+        this.setState({ user: null });
       }
     })
   }

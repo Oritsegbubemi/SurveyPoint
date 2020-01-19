@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./CreateSurvey.css";
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Navbar3 from "../../components/navbar3/Navbar3";
+import Header from "../../components/header/Header";
 import RadioQuestion from "../../components/radioQuestion/RadioQuestion";
 import CheckboxQuestion from "../../components/checkboxQuestion/CheckboxQuestion";
 import Input from "../../components/input/Input";
@@ -9,8 +10,13 @@ import Input from "../../components/input/Input";
 class CreateSurvey extends Component {
   state = {
     questions: [],
-    questionsCount: 0
+    questionsCount: 0,
+    documentName: ''
   };
+
+  nameChange(event) {
+    this.setState({ documentName: event.target.value });
+  }
 
   incrementFieldCount = (question, key) => {
     const { questions, questionsCount } = this.state;
@@ -31,6 +37,15 @@ class CreateSurvey extends Component {
 
     this.setState({ questions: filteredQuestions });
   };
+
+  onExitClick() {
+    this.props.history.push('/dashboard')
+  }
+
+  onSaveClick() {
+    const { documentName } = this.state;
+    this.props.history.push('/dashboard')
+  }
 
   render() {
     const { questions, questionsCount } = this.state;
@@ -62,7 +77,13 @@ class CreateSurvey extends Component {
 
     return (
       <div>
-        <Navbar3 />
+        <Header>
+          <div>
+          <Link to="#" className="btn regular-button btn-nav">
+            Share
+          </Link>
+          </div>
+        </Header>
       <section className="row">
         <div className="col-md-4 selection-container">
           <section>
@@ -72,17 +93,20 @@ class CreateSurvey extends Component {
               name="documentName"
               customClassName="dashboard-search survey-question-input"
               placeHolder="Survey Name"
+              value={this.state.documentName}
+              handleChange={this.nameChange.bind(this)}
+
             />
           </section>
           <section>
             <h3>Actions</h3>
-            <button className="selection-button">
+            <button className="selection-button" onClick={this.onExitClick.bind(this)}>
               <span className="selection-icon">
                 <FontAwesomeIcon icon="arrow-left" />
               </span>
               Exit
             </button>
-            <button className="selection-button">
+            <button className="selection-button" onClick={this.onSaveClick.bind(this)}>
               <span className="selection-icon">
                 <FontAwesomeIcon icon="arrow-down" />
               </span>

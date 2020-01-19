@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Fire from "../../config/Fire";
 import Logo from "./Logo.png";
-import Navbar from "../../components/navbar/Navbar";
+import Header from "../../components/header/Header";
 import Input from "../../components/input/Input";
 import Label from "../../components/label/Label";
 import "./Signup.css";
@@ -43,7 +43,13 @@ class Signup extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <Header>
+          <div>
+          <Link to="/login" className="btn inverse-button btn-nav mr-5">
+            Login
+          </Link>
+          </div>
+        </Header>
       
       <div className="col-md-4 offset-md-4 signup-container">
         <div className="text-center">

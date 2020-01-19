@@ -1,13 +1,14 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Fire from "../../config/Fire";
-import Navbar from "../../components/navbar/Navbar";
+import Header from "../../components/header/Header";
 import Logo from "./Logo.png";
 import Input from "../../components/input/Input";
 import Label from "../../components/label/Label";
 import "./Login.css";
 import Button from "../../components/button/Button";
 import Copyright from "../../components/copyright/Copyright";
-import { Link } from "react-router-dom";
+
 
 class Login extends Component {
   constructor(props) {
@@ -37,7 +38,13 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <Navbar />  
+        <Header>
+          <div>
+          <Link to="/signup" className="btn regular-button btn-nav">
+            Signup
+          </Link>
+          </div>
+        </Header>
       <div className="col-md-4 offset-md-4 login-container">
         <div className="text-center">
           <img src={Logo} alt="logo" className="login-logo" />
