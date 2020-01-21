@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../components/header/Header";
 import RadioQuestion from "../../components/radioQuestion/RadioQuestion";
 import CheckboxQuestion from "../../components/checkboxQuestion/CheckboxQuestion";
+import TextQuestion from "../../components/textQuestion/TextQuestion";
+import Button from "../../components/button/Button";
+import CommentQuestion from "../../components/commentQuestion/CommentQuestion";
 import Input from "../../components/input/Input";
 
 class CreateSurvey extends Component {
@@ -73,6 +76,10 @@ class CreateSurvey extends Component {
     console.log("docu", surveyName);
   };
 
+  onSharePress() {
+    alert('Your Survey Link has being created.')
+  }
+
   render() {
     const { questions, questionsCount } = this.state;
 
@@ -99,6 +106,22 @@ class CreateSurvey extends Component {
       />
     );
 
+    const comment = (
+      <CommentQuestion
+        inputName={`text${questionsCount}`}
+        removeQuestion={this.decrementFieldCount}
+        submitQuestion={e => this.submitQuestion(e)}
+      />
+    );
+
+    const text = (
+      <TextQuestion
+        inputName={`text${questionsCount}`}
+        removeQuestion={this.decrementFieldCount}
+        submitQuestion={e => this.submitQuestion(e)}
+      />
+    );
+
     const displayedQuestions = Object.values(questions).map((field, index) => {
       return <div key={index + 1}>{field}</div>;
     });
@@ -106,14 +129,18 @@ class CreateSurvey extends Component {
     // const submitSurveyBtn = (
     //   <button className="btn btn-success">Submit Survey</button>
     // );
-
+   
     return (
       <div>
+        
         <Header>
           <div>
-          <Link to="#" className="btn regular-button btn-nav">
-            Share
-          </Link>
+          <Button
+            customClassName="regular-button"
+            onclick={this.onSharePress.bind(this)}
+          >
+          Share
+      </Button>
           </div>
         </Header>
       <section className="row">
@@ -165,7 +192,32 @@ class CreateSurvey extends Component {
               <span className="selection-icon">
                 <FontAwesomeIcon icon="check-square" />
               </span>
-              multiple selection
+              Multiple Selection
+            </button>
+          </section>
+
+          <section>
+            <button
+              className="selection-button"
+              onClick={() =>
+                this.incrementFieldCount(text, `text-${questionsCount}`)
+              }
+            >
+              <span className="selection-icon">
+                <FontAwesomeIcon icon="check-square" />
+              </span>
+              Text Field
+            </button>
+            <button
+              className="selection-button"
+              onClick={() =>
+                this.incrementFieldCount(comment, `comment-${questionsCount}`)
+              }
+            >
+              <span className="selection-icon">
+                <FontAwesomeIcon icon="check-square" />
+              </span>
+              Comment Field
             </button>
           </section>
         </div>

@@ -9,6 +9,10 @@ import AboutUsContent from "../../components/aboutUsContent/AboutUsContent";
 import Copyright from "../../components/copyright/Copyright";
 
 class Home extends Component {
+  onButtonPress() {
+    this.props.history.push('/login')
+  }
+
   render() {
     const { sidebarState } = this.props;
     const customClass = sidebarState ? "add-margin" : "";
@@ -32,7 +36,7 @@ class Home extends Component {
               <p>
                 Signup now for free unlimited surveys, questions and responses
               </p>
-              <Button customClassName="regular-button get-started-btn btn-200">
+              <Button customClassName="regular-button get-started-btn btn-200"  onclick={this.onButtonPress.bind(this)}>
                 Get Started <FontAwesomeIcon icon="arrow-right" />
               </Button>
             </div>
