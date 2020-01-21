@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Fire from '../../config/Fire';
 import Button from "../../components/button/Button";
+import Header from "../../components/header/Header";
 import "./Logout.css";
 
 class Logout extends Component {
@@ -16,14 +17,18 @@ class Logout extends Component {
     })
   }
 
+
   render() {
     return (
+      <div>
+        <Header />
       <div className="logout-button-container">
         <h1>You Are Logged In</h1>
         <Button 
-        customClassName="regular-button" onClick = {this.logout}>
+        customClassName="regular-button" onclick = {this.logout.bind(this)}>
             Logout
           </Button>
+      </div>
       </div>
     )
   }

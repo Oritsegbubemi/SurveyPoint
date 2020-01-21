@@ -13,6 +13,11 @@
   width: 30%;
 }
 
+.signup-error {
+  text-align: center;
+  color: red;
+}
+
 .signup-button-container {
   display: flex;
   justify-content: center;

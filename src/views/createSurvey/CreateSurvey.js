@@ -1,15 +1,22 @@
 import React, { Component } from "react";
 import "./CreateSurvey.css";
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Header from "../../components/header/Header";
 import RadioQuestion from "../../components/radioQuestion/RadioQuestion";
 import CheckboxQuestion from "../../components/checkboxQuestion/CheckboxQuestion";
+import TextQuestion from "../../components/textQuestion/TextQuestion";
+import Button from "../../components/button/Button";
+import CommentQuestion from "../../components/commentQuestion/CommentQuestion";
 import Input from "../../components/input/Input";
 
 class CreateSurvey extends Component {
   state = {
     questions: [],
-    questionsCount: 0
+    questionsCount: 0,
+    surveyName: ""
   };
+
 
   incrementFieldCount = (question, key) => {
     const { questions, questionsCount } = this.state;
@@ -23,13 +30,55 @@ class CreateSurvey extends Component {
 
   decrementFieldCount = inputName => {
     const { questions } = this.state;
-
     const filteredQuestions = questions.filter(
       question => question.props.inputName !== inputName
     );
 
     this.setState({ questions: filteredQuestions });
   };
+
+  onExitClick() {
+    this.props.history.push('/dashboard')
+  }
+
+  onSaveClick() {
+    const { surveyName } = this.state;
+    this.props.history.push('/dashboard')
+  }
+
+  submitQuestion = e => {
+    e.preventDefault();
+    const formData = [...e.target];
+    // question the user typed
+    const question = e.target[1].value;
+    // this is an array of the options the user selected
+    const options = formData
+      .filter(input => input.className === "answer-label")
+      .map(inputValue => inputValue.value);
+    // you can run an API here that saves both questions and options when save is clicked
+    // there has to be an Id to identify the questions for a particular survey
+    console.log(124, question, options);
+  };
+
+  handleDocumentName = e => {
+    e.preventDefault();
+    console.log(e.target.value);
+    // this is where I am saving the survey name
+    this.setState({ surveyName: e.target.value });
+  };
+
+  submitSurvey = e => {
+    e.preventDefault();
+    const { surveyName } = this.state;
+    // you can send request to the backend server saving the survey Name
+    // NB there have to be a link with the survey and question so we can be able to
+    // fetch the questions for a particular survey
+    console.log("docu", surveyName);
+  };
+
+  onSharePress() {
+    alert('Your Survey Link has being created.')
+  }
 
   render() {
     const { questions, questionsCount } = this.state;
@@ -45,6 +94,7 @@ class CreateSurvey extends Component {
         inputName={`checkbox-${questionsCount}`}
         removeQuestion={this.decrementFieldCount}
         checkboxKey={questionsCount}
+        submitQuestion={e => this.submitQuestion(e)}
       />
     );
 
@@ -52,6 +102,23 @@ class CreateSurvey extends Component {
       <RadioQuestion
         inputName={`radio${questionsCount}`}
         removeQuestion={this.decrementFieldCount}
+        submitQuestion={e => this.submitQuestion(e)}
+      />
+    );
+
+    const comment = (
+      <CommentQuestion
+        inputName={`text${questionsCount}`}
+        removeQuestion={this.decrementFieldCount}
+        submitQuestion={e => this.submitQuestion(e)}
+      />
+    );
+
+    const text = (
+      <TextQuestion
+        inputName={`text${questionsCount}`}
+        removeQuestion={this.decrementFieldCount}
+        submitQuestion={e => this.submitQuestion(e)}
       />
     );
 
@@ -59,7 +126,23 @@ class CreateSurvey extends Component {
       return <div key={index + 1}>{field}</div>;
     });
 
+    // const submitSurveyBtn = (
+    //   <button className="btn btn-success">Submit Survey</button>
+    // );
+   
     return (
+      <div>
+        
+        <Header>
+          <div>
+          <Button
+            customClassName="regular-button"
+            onclick={this.onSharePress.bind(this)}
+          >
+          Share
+      </Button>
+          </div>
+        </Header>
       <section className="row">
         <div className="col-md-4 selection-container">
           <section>
@@ -69,17 +152,18 @@ class CreateSurvey extends Component {
               name="documentName"
               customClassName="dashboard-search survey-question-input"
               placeHolder="Survey Name"
+              handleChange={this.handleDocumentName}
             />
           </section>
           <section>
             <h3>Actions</h3>
-            <button className="selection-button">
+            <button className="selection-button" onClick={this.onExitClick.bind(this)}>
               <span className="selection-icon">
                 <FontAwesomeIcon icon="arrow-left" />
               </span>
               Exit
             </button>
-            <button className="selection-button">
+            <button className="selection-button" onClick={this.submitSurvey}>
               <span className="selection-icon">
                 <FontAwesomeIcon icon="arrow-down" />
               </span>
@@ -108,14 +192,46 @@ class CreateSurvey extends Component {
               <span className="selection-icon">
                 <FontAwesomeIcon icon="check-square" />
               </span>
-              multiple selection
+              Multiple Selection
+            </button>
+          </section>
+
+          <section>
+            <button
+              className="selection-button"
+              onClick={() =>
+                this.incrementFieldCount(text, `text-${questionsCount}`)
+              }
+            >
+              <span className="selection-icon">
+                <FontAwesomeIcon icon="check-square" />
+              </span>
+              Text Field
+            </button>
+            <button
+              className="selection-button"
+              onClick={() =>
+                this.incrementFieldCount(comment, `comment-${questionsCount}`)
+              }
+            >
+              <span className="selection-icon">
+                <FontAwesomeIcon icon="check-square" />
+              </span>
+              Comment Field
             </button>
           </section>
         </div>
+
         <div className="col-md-8 survey-questions-container">
-          {displayedQuestions.length ? displayedQuestions : noSelectedField}
+          <form>
+            {displayedQuestions.length ? displayedQuestions : noSelectedField}
+            {/* <div className="submit-survey-button-container">
+              {displayedQuestions.length ? submitSurveyBtn : false}
+            </div> */}
+          </form>
         </div>
       </section>
+      </div>
     );
   }
 }

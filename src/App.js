@@ -21,13 +21,12 @@ import {
   faArrowLeft,
   faArrowDown
 } from "@fortawesome/free-solid-svg-icons";
-
+import { Provider } from "react-redux";
 import "./App.css";
 import HomePage from "./views/homePage/HomePage";
 import Signup from "./views/signup/Signup";
+import ForgotPassword from "./views/forgotPassword/ForgotPassword";
 import Login from "./views/login/Login";
-import Navbar from "./components/navbar/Navbar";
-import { Provider } from "react-redux";
 import Dashboard from "./views/dashboard/Dashboard";
 import CreateSurvey from "./views/createSurvey/CreateSurvey";
 import Logout from "./views/logout/Logout";
@@ -63,7 +62,6 @@ class App extends Component {
     this.state = {
       user: null,
     };
-
     this.authListener = this.authListener.bind(this);
   }
 
@@ -85,12 +83,12 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <div className="App">
-            <Navbar />
+          <div className="App">   
             <Switch>
               <Route path="/" exact component={HomePage} />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
+              <Route path="/reset-password" component={ForgotPassword} />
               <Route path="/dashboard" component={Dashboard} />
               <Route path="/new-survey" component={CreateSurvey} />
               <Route path="/logout" component={Logout} />

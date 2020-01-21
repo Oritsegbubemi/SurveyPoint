@@ -1,17 +1,33 @@
 import React, { Component } from "react";
-import "./HomePage.css";
-import Button from "../../components/button/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import AboutUsContent from "../../components/aboutUsContent/AboutUsContent";
-import Copyright from "../../components/copyright/Copyright";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./HomePage.css";
+import Header from "../../components/header/Header";
+import Button from "../../components/button/Button";
+import AboutUsContent from "../../components/aboutUsContent/AboutUsContent";
+import Copyright from "../../components/copyright/Copyright";
+
 class Home extends Component {
+  onButtonPress() {
+    this.props.history.push('/login')
+  }
+
   render() {
     const { sidebarState } = this.props;
-
     const customClass = sidebarState ? "add-margin" : "";
     return (
+      <div>
+        <Header>
+          <div>
+          <Link to="/login" className="btn inverse-button btn-nav mr-5">
+            Login
+          </Link>{" "}
+          <Link to="/signup" className="btn regular-button btn-nav">
+            Signup
+          </Link>
+          </div>
+        </Header>
       <div className={`main-page ${customClass}`}>
         <header className="hero-container">
           <div className="hero-banner">
@@ -20,14 +36,14 @@ class Home extends Component {
               <p>
                 Signup now for free unlimited surveys, questions and responses
               </p>
-              <Button customClassName="regular-button get-started-btn btn-200">
+              <Button customClassName="regular-button get-started-btn btn-200"  onclick={this.onButtonPress.bind(this)}>
                 Get Started <FontAwesomeIcon icon="arrow-right" />
               </Button>
             </div>
           </div>
         </header>
         <section className="about-us-container">
-          <div className="row mr-0 ml-o">
+          <div className="row mr-0 ml-0">
             <AboutUsContent title="Create">
               {" "}
               Design your survey with our simple tool to make questionnaires
@@ -93,6 +109,7 @@ class Home extends Component {
             <Link>Contact</Link>
           </div>
         </footer>
+      </div>
       </div>
     );
   }

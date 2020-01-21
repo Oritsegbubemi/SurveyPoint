@@ -2,32 +2,30 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Sidebar.css";
+import Fire from '../../config/Fire';
 import Logo from "./surveypointlogo.jpeg";
 
 const Sidebar = props => {
   const { handleOpenSidebar } = props;
 
   const hideSidebar = handleOpenSidebar ? "showSidebar" : "hideSidebar";
-
   const customClass = `sidebar ${hideSidebar}`;
-
+  //
   return (
     <div className={customClass}>
       <div className="sidebar-user-profile">
         {" "}
         <FontAwesomeIcon icon="user" />
-        <small>Makpokpomi Gbubemi</small>
+        
+        <h6>{Fire.auth().currentUser.email}</h6>
       </div>
 
       <div className="sidebar-links">
-        <Link to="#">
+        <Link to="/dashboard">
           <FontAwesomeIcon icon="list-alt" /> My Surveys
         </Link>
         <Link to="#">
-          <FontAwesomeIcon icon="trash-alt" /> Trash
-        </Link>
-        <Link to="#">
-          <FontAwesomeIcon icon="address-card" /> Contact
+          <FontAwesomeIcon icon="address-card" /> My Profile
         </Link>
         <Link to="/logout">
           <FontAwesomeIcon icon="sign-out-alt" /> Logout

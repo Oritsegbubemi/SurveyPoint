@@ -1,26 +1,20 @@
 import React from "react";
-import "./RadioQuestion.css";
+import "./TextQuestion.css";
 import Input from "../input/Input";
 
-const RadioQuestion = props => {
+const TextQuestion = props => {
   const { inputName, removeQuestion, submitQuestion } = props;
-  const radioButton = [];
-  const radioButtonCount = 3;
-  for (let index = 0; index < radioButtonCount; index++) {
-    radioButton.push(
-      <div key={index + 100} className="custom-control custom-radio">
+  const text = [];
+  const textCount = 1;
+  for (let index = 0; index < textCount; index++) {
+    text.push(
+      <div key={index + 1} className="custom-control custom-radio">
         <Input
-          key={index + 1}
-          type="radio"
-          name={`answer${inputName}`}
-          customClassName="answer-radio"
-        />
-        <Input
-          key={index + 400}
+          key={index + 200}
           type="text"
           name={`option${inputName}`}
           customClassName="answer-label"
-          placeHolder="Type your options..."
+          placeHolder="Enter your Answer..."
           id={`answer${index + 1}`}
         />
       </div>
@@ -43,10 +37,10 @@ const RadioQuestion = props => {
             placeHolder="Type your question here..."
           />
         </div>
-        {radioButton}
+        {text}
       </form>
     </div>
   );
 };
 
-export default RadioQuestion;
+export default TextQuestion;

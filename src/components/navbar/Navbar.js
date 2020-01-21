@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Navbar.css";
 import Sidebar from "../sidebar/Sidebar";
 import { connect } from "react-redux";
+import Fire from '../../config/Fire';
 import { sidebarToggle } from "./NavbarAction";
 import { Link } from "react-router-dom";
 
@@ -24,12 +25,7 @@ const Navbar = props => {
         </div>
 
         <div className="navbar-right">
-          <Link to="/login" className="btn inverse-button btn-nav mr-5">
-            Login
-          </Link>{" "}
-          <Link to="/signup" className="btn regular-button btn-nav">
-            Signup
-          </Link>
+          <h3>Create Awesome Survey</h3>
         </div>
       </nav>
 
