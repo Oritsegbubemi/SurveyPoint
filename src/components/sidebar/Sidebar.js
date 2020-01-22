@@ -2,11 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Sidebar.css";
-import Fire from '../../config/Fire';
 import Logo from "./surveypointlogo.jpeg";
 
 const Sidebar = props => {
-  const { handleOpenSidebar } = props;
+  const { handleOpenSidebar, user } = props;
 
   const hideSidebar = handleOpenSidebar ? "showSidebar" : "hideSidebar";
   const customClass = `sidebar ${hideSidebar}`;
@@ -15,9 +14,12 @@ const Sidebar = props => {
     <div className={customClass}>
       <div className="sidebar-user-profile">
         {" "}
-        <FontAwesomeIcon icon="user" />
-        
-        <h6>{Fire.auth().currentUser.email}</h6>
+        <div>
+          <FontAwesomeIcon icon="user" />
+        </div>
+        <div className="sidebar-user-email">
+          <h6>{user.email}</h6>
+        </div>
       </div>
 
       <div className="sidebar-links">
