@@ -3,12 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Navbar.css";
 import Sidebar from "../sidebar/Sidebar";
 import { connect } from "react-redux";
-import Fire from '../../config/Fire';
 import { sidebarToggle } from "./NavbarAction";
 import { Link } from "react-router-dom";
 
 const Navbar = props => {
-  const { sidebarToggle, sidebarState } = props;
+  const { sidebarToggle, sidebarState, user } = props;
 
   return (
     <React.Fragment>
@@ -25,17 +24,20 @@ const Navbar = props => {
         </div>
 
         <div className="navbar-right">
-          <h3>Create Awesome Survey</h3>
+          <Link to="/new-survey">
+            <h3>Create Awesome Survey</h3>
+          </Link>
         </div>
       </nav>
 
-      <Sidebar handleOpenSidebar={sidebarState} />
+      <Sidebar handleOpenSidebar={sidebarState} user={user} />
     </React.Fragment>
   );
 };
 
 export const mapStateToProps = state => ({
-  sidebarState: state.sidebar.sidebar
+  sidebarState: state.sidebar.sidebar,
+  user: state.user.user
 });
 
 export const mapDispatchToProps = dispatch => ({

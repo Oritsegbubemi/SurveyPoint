@@ -31,9 +31,11 @@ import Dashboard from "./views/dashboard/Dashboard";
 import CreateSurvey from "./views/createSurvey/CreateSurvey";
 import Logout from "./views/logout/Logout";
 import Fire from "../src/config/Fire";
-import setupStore from "./store";
+import { store, persistor } from "./store/index";
+import { PersistGate } from "redux-persist/integration/react";
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
 
-const store = setupStore();
+// const store = setupStore();
 
 library.add(
   fab,
@@ -60,7 +62,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
+      user: null
     };
     this.authListener = this.authListener.bind(this);
   }
@@ -70,31 +72,33 @@ class App extends Component {
   }
 
   authListener() {
-    Fire.auth().onAuthStateChanged((user) => {
+    Fire.auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({ user });
       } else {
         this.setState({ user: null });
       }
-    })
+    });
   }
-  
+
   render() {
     return (
       <Provider store={store}>
-        <Router>
-          <div className="App">   
-            <Switch>
-              <Route path="/" exact component={HomePage} />
-              <Route path="/signup" component={Signup} />
-              <Route path="/login" component={Login} />
-              <Route path="/reset-password" component={ForgotPassword} />
-              <Route path="/dashboard" component={Dashboard} />
-              <Route path="/new-survey" component={CreateSurvey} />
-              <Route path="/logout" component={Logout} />
-            </Switch>
-          </div>
-        </Router>
+        <PersistGate persistor={persistor}>
+          <Router>
+            <div className="App">
+              <Switch>
+                <Route path="/" exact component={HomePage} />
+                <Route path="/signup" component={Signup} />
+                <Route path="/login" component={Login} />
+                <Route path="/reset-password" component={ForgotPassword} />
+                <PrivateRoute path="/dashboard" component={Dashboard} />
+                <PrivateRoute path="/new-survey" component={CreateSurvey} />
+                <Route path="/logout" component={Logout} />
+              </Switch>
+            </div>
+          </Router>
+        </PersistGate>
       </Provider>
     );
   }

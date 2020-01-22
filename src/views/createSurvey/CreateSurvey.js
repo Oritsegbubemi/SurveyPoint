@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./CreateSurvey.css";
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../components/header/Header";
 import RadioQuestion from "../../components/radioQuestion/RadioQuestion";
@@ -42,7 +41,6 @@ class CreateSurvey extends Component {
   }
 
   onSaveClick() {
-    const { surveyName } = this.state;
     this.props.history.push('/dashboard')
   }
 

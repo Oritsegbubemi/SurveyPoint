@@ -6,7 +6,6 @@ import ExistingSurveyCard from "../../components/surveyCard/existingSurveyCard";
 import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Fire from '../../config/Fire';
 import { connect } from "react-redux";
 
 const Dashboard = props => {
@@ -16,18 +15,23 @@ const Dashboard = props => {
   return (
     <div>
       <Navbar />
-    <div className={`main-page ${customClass}`}>
-      <div className="ml-4">
-        <Input type="text" name="search" customClassName="dashboard-search" placeHolder="Search" />
-        <Button>
-          <FontAwesomeIcon icon="search" />
-        </Button>
+      <div className={`main-page ${customClass}`}>
+        <div className="ml-4">
+          <Input
+            type="text"
+            name="search"
+            customClassName="dashboard-search"
+            placeHolder="Search"
+          />
+          <Button>
+            <FontAwesomeIcon icon="search" />
+          </Button>
+        </div>
+        <div className="survey-card-container">
+          <SurveyCard />
+          <ExistingSurveyCard surveyTitle="Best Restaurant" />
+        </div>
       </div>
-      <div className="survey-card-container">
-        <SurveyCard />
-        <ExistingSurveyCard surveyTitle="Best Restaurant" />
-      </div>
-    </div>
     </div>
   );
 };
